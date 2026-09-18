@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spotify Clone Premium</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="c.css">
+
+</head>
+
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<i class="fab fa-spotify"></i>
+
+<span>Spotify</span>
+
+</div>
+
+
+
+<nav>
+
+
+<a href="#" class="active">
+
+<i class="fas fa-house"></i>
+
+<span>Home</span>
+
+</a>
+
+
+
+<a href="#" onclick="focusSearch()">
+
+<i class="fas fa-magnifying-glass"></i>
+
+<span>Search</span>
+
+</a>
+
+
+
+
+<a href="#" onclick="showLiked()">
+
+<i class="fas fa-heart"></i>
+
+<span>Liked Songs</span>
+
+</a>
+
+
+
+
+<a href="#">
+
+<i class="fas fa-list"></i>
+
+<span>Playlist</span>
+
+</a>
+
+
+
+</nav>
+
+
+
+<div id="playlist">
+
+</div>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- MAIN -->
+
+
+<main class="main">
+
+
+<header class="topbar">
+
+
+<div class="search-box">
+
+
+<i class="fas fa-search"></i>
+
+
+<input
+id="search"
+type="text"
+placeholder="Search songs..."
+onkeyup="searchSongs()">
+
+
+</div>
+
+
+
+
+<div class="profile">
+
+
+<img
+src="https://imgs.search.brave.com/rIie9CeV3BxX_nEy5uBtpIb-eIB9i0jjagQtXhNWAZk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvbWFz/dGVyLXZpamF5LTRr/LXJldHJvLXBvc3Rl/ci1ueXh4bjBhMnpv/ZHE1ajllLmpwZw"
+alt="User Profile"
+loading="lazy"
+referrerpolicy="no-referrer">
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+<section>
+
+
+<h2 class="heading">
+
+Popular Songs
+
+</h2>
+
+
+
+<div class="songs" id="songs">
+
+</div>
+
+
+
+</section>
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+<!-- AUDIO -->
+
+<audio id="audio"></audio>
+
+
+
+
+
+
+
+
+
+
+<!-- PLAYER -->
+
+<footer class="player">
+
+
+
+
+
+<div class="left-player">
+
+
+<img
+id="cover"
+src="https://via.placeholder.com/70"
+alt="Album Cover">
+
+
+
+<div>
+
+
+<h3 id="title">
+Select a Song
+</h3>
+
+
+
+<p id="artist">
+Artist
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="center-player">
+
+
+<div class="controls">
+
+
+
+<button 
+aria-label="Previous Song"
+onclick="previous()">
+
+<i class="fas fa-backward"></i>
+
+</button>
+
+
+
+
+
+
+
+<button
+id="play"
+class="play-btn"
+aria-label="Play Pause"
+onclick="playPause()">
+
+
+<i class="fas fa-play"></i>
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+aria-label="Next Song"
+onclick="next()">
+
+
+<i class="fas fa-forward"></i>
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+id="likeBtn"
+aria-label="Like Song"
+onclick="like()">
+
+
+
+<i class="far fa-heart"></i>
+
+
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="time">
+
+
+<span id="currentTime">
+0:00
+</span>
+
+
+
+
+<input
+type="range"
+id="progress"
+min="0"
+max="100"
+value="0">
+
+
+
+
+
+<span id="duration">
+0:00
+</span>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="right-player">
+
+
+<i class="fas fa-volume-up"></i>
+
+
+<input
+id="volume"
+type="range"
+min="0"
+max="1"
+step="0.1"
+value="1">
+
+
+</div>
+
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="j.js"></script>
+
+
+</body>
+
+</html>
