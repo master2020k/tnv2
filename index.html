@@ -1,413 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
+<!DOCTYPE html> <html lang="en"> <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spotify Clone Premium</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Spotify Clone</title>
 
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
 
-<!-- Font Awesome -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
 
-<!-- CSS -->
-<link rel="stylesheet" href="c.css">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
 
-</head>
-
-
-
-<body>
-
-
-<!-- SIDEBAR -->
+<link
+    rel="stylesheet"
+    href="c.css"
+>
+</head> <body>
+<!-- =========================
+     SIDEBAR
+========================== -->
 
 <aside class="sidebar">
 
-
-<div class="logo">
-
-<i class="fab fa-spotify"></i>
-
-<span>Spotify</span>
-
-</div>
+    <div class="logo">
+        <i class="fab fa-spotify"></i>
+        <span>Spotify</span>
+    </div>
 
 
+    <nav class="main-nav">
 
-<nav>
-
-
-<a href="#" class="active">
-
-<i class="fas fa-house"></i>
-
-<span>Home</span>
-
-</a>
-
+        <a
+            href="#"
+            class="nav-link active"
+            onclick="showHome(event)"
+        >
+            <i class="fas fa-house"></i>
+            <span>Home</span>
+        </a>
 
 
-<a href="#" onclick="focusSearch()">
-
-<i class="fas fa-magnifying-glass"></i>
-
-<span>Search</span>
-
-</a>
-
-
-
-
-<a href="#" onclick="showLiked()">
-
-<i class="fas fa-heart"></i>
-
-<span>Liked Songs</span>
-
-</a>
+        <a
+            href="#"
+            class="nav-link"
+            onclick="focusSearch(event)"
+        >
+            <i class="fas fa-magnifying-glass"></i>
+            <span>Search</span>
+        </a>
 
 
+        <a
+            href="#"
+            class="nav-link"
+            onclick="showLiked(event)"
+        >
+            <i class="fas fa-heart"></i>
+            <span>Liked Songs</span>
+        </a>
 
 
-<a href="#">
+        <a
+            href="#"
+            class="nav-link"
+            onclick="showPlaylist(event)"
+        >
+            <i class="fas fa-list"></i>
+            <span>Playlist</span>
+        </a>
 
-<i class="fas fa-list"></i>
-
-<span>Playlist</span>
-
-</a>
-
-
-
-</nav>
-
+    </nav>
 
 
-<div id="playlist">
+    <div class="sidebar-title">
+        YOUR PLAYLIST
+    </div>
 
-</div>
 
-
+    <div id="playlist"></div>
 
 </aside>
 
 
-
-
-
-
-
-
-
-<!-- MAIN -->
-
+<!-- =========================
+     MAIN
+========================== -->
 
 <main class="main">
 
+    <!-- TOPBAR -->
 
-<header class="topbar">
+    <header class="topbar">
 
+        <div class="search-box">
 
-<div class="search-box">
+            <i class="fas fa-search"></i>
 
+            <input
+                id="search"
+                type="text"
+                placeholder="What do you want to play?"
+                autocomplete="off"
+            >
 
-<i class="fas fa-search"></i>
-
-
-<input
-id="search"
-type="text"
-placeholder="Search songs..."
-onkeyup="searchSongs()">
-
-
-</div>
+        </div>
 
 
+        <div class="profile">
+
+            <img
+                src="https://via.placeholder.com/70"
+                alt="Profile"
+            >
+
+        </div>
+
+    </header>
 
 
-<div class="profile">
+    <!-- CONTENT -->
+
+    <section class="content">
+
+        <div class="section-header">
+
+            <div>
+
+                <p class="small-title">
+                    LISTEN NOW
+                </p>
+
+                <h1 id="pageTitle">
+                    Popular Songs
+                </h1>
+
+            </div>
+
+        </div>
 
 
-<img
-src="https://imgs.search.brave.com/rIie9CeV3BxX_nEy5uBtpIb-eIB9i0jjagQtXhNWAZk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvbWFz/dGVyLXZpamF5LTRr/LXJldHJvLXBvc3Rl/ci1ueXh4bjBhMnpv/ZHE1ajllLmpwZw"
-alt="User Profile"
-loading="lazy"
-referrerpolicy="no-referrer">
+        <div
+            class="songs"
+            id="songs"
+        ></div>
 
-
-</div>
-
-
-
-</header>
-
-
-
-
-
-
-
-<section>
-
-
-<h2 class="heading">
-
-Popular Songs
-
-</h2>
-
-
-
-<div class="songs" id="songs">
-
-</div>
-
-
-
-</section>
-
-
+    </section>
 
 </main>
 
 
-
-
-
-
-
-
-
-<!-- AUDIO -->
-
-<audio id="audio"></audio>
-
-
-
-
-
-
-
-
-
-
-<!-- PLAYER -->
+<!-- =========================
+     PLAYER
+========================== -->
 
 <footer class="player">
 
+    <!-- SONG INFO -->
 
+    <div class="player-song">
 
+        <img
+            id="cover"
+            src="img/default.jpg"
+            alt="Album Cover"
+        >
 
 
-<div class="left-player">
+        <div class="song-info">
 
+            <h3 id="title">
+                Select a Song
+            </h3>
 
-<img
-id="cover"
-src="https://via.placeholder.com/70"
-alt="Album Cover">
+            <p id="artist">
+                Artist
+            </p>
 
+        </div>
 
+    </div>
 
-<div>
 
+    <!-- CONTROLS -->
 
-<h3 id="title">
-Select a Song
-</h3>
+    <div class="player-center">
 
+        <div class="controls">
 
+            <button
+                type="button"
+                onclick="previous()"
+                aria-label="Previous"
+            >
+                <i class="fas fa-backward-step"></i>
+            </button>
 
-<p id="artist">
-Artist
-</p>
 
+            <button
+                type="button"
+                id="play"
+                class="play-btn"
+                onclick="playPause()"
+                aria-label="Play"
+            >
+                <i class="fas fa-play"></i>
+            </button>
 
 
-</div>
+            <button
+                type="button"
+                onclick="next()"
+                aria-label="Next"
+            >
+                <i class="fas fa-forward-step"></i>
+            </button>
 
 
+            <button
+                type="button"
+                id="likeBtn"
+                onclick="like()"
+                aria-label="Like"
+            >
+                <i class="far fa-heart"></i>
+            </button>
 
-</div>
+        </div>
 
 
+        <div class="progress-area">
 
+            <span id="currentTime">
+                0:00
+            </span>
 
 
+            <input
+                type="range"
+                id="progress"
+                min="0"
+                max="100"
+                value="0"
+            >
 
 
+            <span id="duration">
+                0:00
+            </span>
 
+        </div>
 
-<div class="center-player">
+    </div>
 
 
-<div class="controls">
+    <!-- VOLUME -->
 
-
-
-<button 
-aria-label="Previous Song"
-onclick="previous()">
-
-<i class="fas fa-backward"></i>
-
-</button>
-
-
-
-
-
-
-
-<button
-id="play"
-class="play-btn"
-aria-label="Play Pause"
-onclick="playPause()">
-
-
-<i class="fas fa-play"></i>
-
-
-</button>
-
-
-
-
-
-
-
-
-<button
-aria-label="Next Song"
-onclick="next()">
-
-
-<i class="fas fa-forward"></i>
-
-
-</button>
-
-
-
-
-
-
-
-
-<button
-id="likeBtn"
-aria-label="Like Song"
-onclick="like()">
-
-
-
-<i class="far fa-heart"></i>
-
-
-
-</button>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="time">
-
-
-<span id="currentTime">
-0:00
-</span>
-
-
-
-
-<input
-type="range"
-id="progress"
-min="0"
-max="100"
-value="0">
-
-
-
-
-
-<span id="duration">
-0:00
-</span>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="right-player">
-
-
-<i class="fas fa-volume-up"></i>
-
-
-<input
-id="volume"
-type="range"
-min="0"
-max="1"
-step="0.1"
-value="1">
-
-
-</div>
-
-
-
-
+    <div class="player-volume">
+
+        <i
+            id="volumeIcon"
+            class="fas fa-volume-high"
+        ></i>
+
+
+        <input
+            id="volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+        >
+
+    </div>
 
 </footer>
 
 
+<audio id="audio"></audio>
 
-
-
-
-
-
-
-<!-- JAVASCRIPT -->
 
 <script src="j.js"></script>
-
-
-</body>
-
-</html>
+</body> </html>
